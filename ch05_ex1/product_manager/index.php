@@ -61,4 +61,25 @@ if ($action == 'list_products') {
     $categories = get_categories();
     include('category_list.php');
 }
+
+// 5.1.10
+//add category
+else if ($action == 'add_category') {
+    $name = filter_input(INPUT_POST, 'name');
+
+    //Validate user entry
+    if ($name == NULL) {
+        $error = "Invalid category name. Check name and try again.";
+        include('view/error.php');
+    } else {
+        add_category($name);
+        header('Location: .?action=list_categories'); //display categories
+    }
+}
+//delete category
+else if ($action == 'delete_category') {
+    $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
+    delete_category($category_id);
+    header('Location: .?action=list_categories'); 
+}
 ?>

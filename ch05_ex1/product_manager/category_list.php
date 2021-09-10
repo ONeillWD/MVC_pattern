@@ -7,13 +7,13 @@
             <th>Name</th>
             <th>&nbsp;</th>
         </tr>        
-        <!-- add category rows here -->
+        <!-- add category rows here 5.1.7 -->
         <?php foreach ($categories as $category) : ?>
             <tr>
                 <td><?php echo $category['categoryName']; ?></td>
                 <td>
                     <form action="index.php" method="post">
-                        <input type="hidden" name="action" value="delete category">
+                        <input type="hidden" name="action" value="delete_category">
                         <input type="hidden" name="category_id" value="<?php echo $category['categoryID']; ?>">
                         <input type="submit" value="Delete">
                     </form>
@@ -23,8 +23,13 @@
     </table>
 
     <h2>Add Category</h2>
-    <!-- add code for form here -->
-
+    <!-- add code for form here 5.1.8 -->
+            <form id="add_category_form" action="index.php" method="post">
+                <input type="hidden" name="action" value="add_category">
+                <label>Name:</label>
+                <input type="text" name="name"/>
+                <input type="submit" value="Add"/>
+            </form>
     <p><a href="index.php?action=list_products">List Products</a></p>
 
 </main>
